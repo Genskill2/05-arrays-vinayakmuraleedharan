@@ -1,45 +1,71 @@
-/* Enter your solutions in this file */
 #include <stdio.h>
-int max(int A[], int n);
-int min(int A[], int n);
-float average(int A[], int n);
-int max(int A[], int n)
+int max(int a[], int n)
 {
-  
-  int maxm=A[0];
-  for(int i=1;i<n;i++)
-  {
-    if(A[i]>maxm)
+    int maxm = 0;
+    for(int i = 0; i<n; i++)
     {
-      maxm=A[i];
+        if(a[i]>maxm)
+            maxm = a[i];
     }
-  }
-  return maxm;
-}
-int min(int A[], int n)
-  {
-  
-  int minm=A[0];
-  for(int i=1;i<n;i++)
-  {
-    if(A[i]<minm)
-    {
-      minm=A[i];
-    }
-  }
-  return minm;
-}
-float average(int A[], int n)
-{
-  int sum=0;
-  float avg;
-  for(int i=0;i<n;i++)
-  {
-    sum+=A[i];
-  }
-  avg=sum/n;
-  return avg;
+    return maxm;
 }
 
+int min(int a[], int n)
+{
+    int minm = 2147483647;
+    for(int i = 0; i<n; i++)
+    {
+        if (a[i]< minm)
+            minm = a[i];
+    }
+    return minm;
+}
+
+float average(int a[], int n)
+{
+    int sum = 0;
+    for(int i=0; i<n; i++)
+    {
+        sum+=a[i];
+    }
+    int avgn = sum/n;
+    return avgn;
+}
+
+int mode(int a[],int n) 
+{
+   int mxV = 0, mxC = 0;
+   for (int i = 0; i < n; ++i) 
+   {
+      int ct = 0;
+      for (int j = 0; j < n; ++j) 
+      {
+         if (a[j] == a[i])
+            ++ct;
+      }  
+      if (ct > mxC)
+      {  
+         mxC = ct;
+         mxV = a[i];
+      }
+   }
+   return mxV; 
+}
+
+int factors(int n, int a[])
+{
+    int p=n/2,j=0;
+    for(int i=2;i<p+1;)
+    {
+        if(n%i==0)
+        {
+            a[j]=i;
+            j++;
+            n=n/i;
+        }
+     else 
+     i++;
+  }return j;
+}
 
     
